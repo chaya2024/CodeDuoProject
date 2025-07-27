@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LogIn, UserPlus, Chrome, Github } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { getBaseUrl } from "@/lib/utils";
 
 export const Auth = () => {
   const [email, setEmail] = useState('');
@@ -32,7 +33,9 @@ export const Auth = () => {
     setLoading(true);
     
     try {
-      const redirectUrl = `${window.location.origin}/admin`;
+      // Get the appropriate base URL for redirects
+      const baseUrl = getBaseUrl();
+      const redirectUrl = `${baseUrl}/admin`;
       
       if (type === 'signup') {
         const { error } = await supabase.auth.signUp({
@@ -99,10 +102,12 @@ export const Auth = () => {
     setLoading(true);
     
     try {
+      // Get the appropriate base URL for redirects
+      const baseUrl = getBaseUrl();
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${window.location.origin}/admin`
+          redirectTo: `${baseUrl}/admin`
         }
       });
       

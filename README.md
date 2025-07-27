@@ -29,12 +29,55 @@ git clone <YOUR_GIT_URL>
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Step 3: Set up environment variables (optional but recommended)
+cp .env.example .env
+# Edit .env file to match your setup if needed
+
+# Step 4: Install the necessary dependencies.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 5: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
+
+### Important Notes for Multi-Device Access
+
+This project is configured to work across different devices and networks:
+
+- **Local Network Access**: The dev server runs on `0.0.0.0:8080`, allowing access from other devices on your network
+- **Authentication URLs**: The app automatically detects the correct base URL for authentication redirects
+- **Environment Variables**: You can set `VITE_BASE_URL` in your `.env` file to override the default URL detection
+
+To access from another device on your network:
+1. Run `npm run network-info` to see your local IP address
+2. Open `http://YOUR_IP_ADDRESS:8080` in the other device's browser
+3. For authentication, go to `http://YOUR_IP_ADDRESS:8080/auth`
+4. Authentication will work correctly thanks to the dynamic URL detection
+
+**Important:** Make sure to update your Supabase settings with the correct redirect URLs. See `SUPABASE_SETUP.md` for detailed instructions.
+
+## Quick Commands
+
+```sh
+# Check your local network info
+npm run network-info
+
+# Start development server (accessible from network)
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Troubleshooting Multi-Device Access
+
+If authentication doesn't work from other devices:
+
+1. **Check Supabase Settings**: Follow instructions in `SUPABASE_SETUP.md`
+2. **Verify Network Access**: Run `npm run network-info` to get your IP
+3. **Check Firewall**: Ensure port 8080 is open
+4. **Clear Browser Cache**: On the other device, clear cache and cookies
+5. **Check Console**: Look for CORS errors in browser developer tools
 
 **Edit a file directly in GitHub**
 
@@ -54,11 +97,14 @@ npm run dev
 
 This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite** - Fast development server with HMR
+- **TypeScript** - Type-safe JavaScript
+- **React** - UI library with hooks
+- **shadcn-ui** - Beautiful and accessible UI components
+- **Tailwind CSS** - Utility-first CSS framework
+- **Supabase** - Backend as a service (database, auth)
+- **React Query** - Data fetching and state management
+- **React Router** - Client-side routing
 
 ## How can I deploy this project?
 
