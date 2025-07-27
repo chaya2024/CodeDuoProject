@@ -40,6 +40,9 @@ export const Auth = () => {
       console.log('Auth attempt:', { type, email, baseUrl, redirectUrl });
       console.log('Supabase URL:', supabase.supabaseUrl);
       console.log('Supabase Key exists:', !!supabase.supabaseKey);
+      console.log('Supabase Key length:', supabase.supabaseKey?.length);
+      console.log('Environment:', import.meta.env.MODE);
+      console.log('User agent:', navigator.userAgent);
       
       if (type === 'signup') {
         const { error } = await supabase.auth.signUp({
