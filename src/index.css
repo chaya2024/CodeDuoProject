@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Professional Company Website Design System */
 
 @layer base {
   :root {
@@ -17,8 +15,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 236 72% 59%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 248 100% 70%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -26,17 +25,29 @@ All colors MUST be HSL.
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 248 100% 70%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 236 72% 59%;
 
-    --radius: 0.5rem;
+    --hero-gradient: linear-gradient(135deg, hsl(236 72% 59%), hsl(248 100% 70%));
+    --hero-glow: linear-gradient(135deg, hsl(236 72% 59% / 0.2), hsl(248 100% 70% / 0.2));
+    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --text-gradient: linear-gradient(135deg, hsl(236 72% 59%), hsl(248 100% 70%));
+    
+    --shadow-elegant: 0 10px 30px -10px hsl(236 72% 59% / 0.3);
+    --shadow-glow: 0 0 40px hsl(248 100% 70% / 0.4);
+    --shadow-card: 0 4px 20px -4px hsl(236 72% 59% / 0.1);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
