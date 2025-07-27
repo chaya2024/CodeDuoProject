@@ -71,13 +71,35 @@ npm run build
 
 ## Troubleshooting Multi-Device Access
 
-If authentication doesn't work from other devices:
+### Authentication Errors ("Failed to fetch")
 
-1. **Check Supabase Settings**: Follow instructions in `SUPABASE_SETUP.md`
-2. **Verify Network Access**: Run `npm run network-info` to get your IP
-3. **Check Firewall**: Ensure port 8080 is open
-4. **Clear Browser Cache**: On the other device, clear cache and cookies
-5. **Check Console**: Look for CORS errors in browser developer tools
+If you get "Failed to fetch" errors when trying to sign in:
+
+1. **Check Supabase Project Status**: 
+   - Go to [Supabase Dashboard](https://supabase.com/dashboard)
+   - Verify your project `dkbumxunrjvsuwrtqcyd` is active and running
+
+2. **Verify Environment Variables**:
+   ```bash
+   npm run env-check
+   ```
+
+3. **Test Connection**: 
+   - Open your app and scroll to the bottom "System Status" section
+   - Click "Test Database Connection" to check if Supabase is reachable
+
+4. **Configure Supabase Settings**: Follow instructions in `SUPABASE_SETUP.md`
+
+5. **Network Troubleshooting**:
+   - **Verify Network Access**: Run `npm run network-info` to get your IP
+   - **Check Firewall**: Ensure port 8080 is open
+   - **Clear Browser Cache**: On the other device, clear cache and cookies
+   - **Check Console**: Look for CORS errors in browser developer tools
+
+6. **Common Issues**:
+   - **Project Paused**: Supabase pauses inactive projects - restart it in dashboard
+   - **Invalid URLs**: Make sure redirect URLs in Supabase match your current setup
+   - **Network Blocking**: Some networks block external API calls
 
 **Edit a file directly in GitHub**
 

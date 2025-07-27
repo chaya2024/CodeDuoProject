@@ -62,8 +62,36 @@ When you deploy to production (via Loveable or elsewhere):
 
 ## Troubleshooting
 
+### "Failed to fetch" Errors
+
+**If you get "Failed to fetch" errors:**
+
+1. **Project Status**: 
+   - Check if your Supabase project is paused (common after inactivity)
+   - Go to [Supabase Dashboard](https://supabase.com/dashboard) → Projects → Resume project
+
+2. **Network Connectivity**:
+   ```bash
+   # Test if you can reach Supabase
+   curl -I https://dkbumxunrjvsuwrtqcyd.supabase.co/rest/v1/
+   # Should return HTTP 401 (not 404 or timeout)
+   ```
+
+3. **Environment Variables**:
+   - Make sure `.env` file exists and has correct values
+   - Restart your dev server after changing `.env`
+
+### Authentication Issues
+
 **If authentication still doesn't work:**
 1. Check browser console for CORS errors
 2. Verify the redirect URLs in Supabase match exactly
-3. Clear browser cache and cookies
+3. Clear browser cache and cookies  
 4. Check that the network firewall allows connections on port 8080
+
+### Common Error Messages
+
+- **"Failed to fetch"** → Supabase project might be paused or network issue
+- **"Invalid login credentials"** → Wrong email/password or user doesn't exist
+- **"Email not confirmed"** → Check Supabase auth settings or user's email
+- **CORS errors** → Incorrect redirect URLs in Supabase configuration

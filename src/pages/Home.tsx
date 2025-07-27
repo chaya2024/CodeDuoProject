@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Star, Users, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { SupabaseTest } from "@/components/SupabaseTest";
 import heroImage from "@/assets/hero-image.jpg";
 
 interface Company {
@@ -217,6 +218,14 @@ export const Home = () => {
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>
+        </div>
+      </section>
+
+      {/* Supabase Test Section */}
+      <section className="py-20 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-8">System Status</h2>
+          <SupabaseTest />
         </div>
       </section>
     </div>

@@ -37,6 +37,10 @@ export const Auth = () => {
       const baseUrl = getBaseUrl();
       const redirectUrl = `${baseUrl}/admin`;
       
+      console.log('Auth attempt:', { type, email, baseUrl, redirectUrl });
+      console.log('Supabase URL:', supabase.supabaseUrl);
+      console.log('Supabase Key exists:', !!supabase.supabaseKey);
+      
       if (type === 'signup') {
         const { error } = await supabase.auth.signUp({
           email,
@@ -88,6 +92,11 @@ export const Auth = () => {
         }
       }
     } catch (error: any) {
+      console.error('Auth error details:', error);
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+      
       toast({
         title: "Authentication error",
         description: error.message || "An unexpected error occurred. Please try again.",

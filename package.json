@@ -9,7 +9,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "network-info": "./get-ip.sh"
+    "network-info": "./get-ip.sh",
+    "env-check": "echo 'Environment Variables:' && echo 'VITE_SUPABASE_URL=' && echo $VITE_SUPABASE_URL && echo 'VITE_SUPABASE_ANON_KEY=' && echo $VITE_SUPABASE_ANON_KEY"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
