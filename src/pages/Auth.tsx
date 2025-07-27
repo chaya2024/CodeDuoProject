@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LogIn, UserPlus, Chrome } from "lucide-react";
+import { LogIn, UserPlus, Chrome, Github } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
@@ -95,12 +95,12 @@ export const Auth = () => {
     }
   };
 
-  const handleGoogleAuth = async () => {
+  const handleOAuthAuth = async (provider: 'google' | 'github') => {
     setLoading(true);
     
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider,
         options: {
           redirectTo: `${window.location.origin}/admin`
         }
@@ -112,7 +112,7 @@ export const Auth = () => {
     } catch (error: any) {
       toast({
         title: "Authentication error",
-        description: error.message || "Failed to sign in with Google. Please try again.",
+        description: error.message || `Failed to sign in with ${provider}. Please try again.`,
         variant: "destructive",
       });
       setLoading(false);
@@ -140,17 +140,28 @@ export const Auth = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {/* Google Sign In */}
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full"
-                onClick={handleGoogleAuth}
-                disabled={loading}
-              >
-                <Chrome className="w-5 h-5 mr-2" />
-                Continue with Google
-              </Button>
+              {/* OAuth Sign In */}
+              <div className="grid grid-cols-2 gap-3">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => handleOAuthAuth('google')}
+                  disabled={loading}
+                >
+                  <Chrome className="w-5 h-5 mr-2" />
+                  Google
+                </Button>
+                
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => handleOAuthAuth('github')}
+                  disabled={loading}
+                >
+                  <Github className="w-5 h-5 mr-2" />
+                  GitHub
+                </Button>
+              </div>
 
               <div className="relative">
                 <div className="absolute inset-0 flex items-center">
@@ -158,7 +169,7 @@ export const Auth = () => {
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
                   <span className="bg-background px-2 text-muted-foreground">
-                    Or continue with
+                    Or continue with email
                   </span>
                 </div>
               </div>
