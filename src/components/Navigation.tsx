@@ -30,6 +30,7 @@ export const Navigation = () => {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
+    ...(import.meta.env.MODE === 'development' ? [{ name: "Debug", href: "/debug" }] : []),
   ];
 
   return (
